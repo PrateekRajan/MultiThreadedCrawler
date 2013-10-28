@@ -54,8 +54,13 @@ public class CrawlerThread implements Runnable {
 
 	@Override
 	public void run() {
+		try{
 		crawl(seed);
 		System.out.println(Thread.currentThread().getName() + " "
-				+ SetAndQueue.queue.peek());
+				+ SetAndQueue.queue.peek());	
+		}catch (IllegalArgumentException ex) {
+			System.out.println("Malformed URL");
+		}
+		
 	}
 }
